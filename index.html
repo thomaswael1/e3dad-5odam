@@ -13,19 +13,30 @@
             color: #333;
         }
         .container {
+            width: 100%;
             max-width: 600px;
             margin: 40px auto;
             background: #fff;
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            box-sizing: border-box; /* تضمن عدم خروج الحواف في الموبايل */
         }
         h2 {
             text-align: center;
             color: #2c3e50;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 10px;
+            margin-bottom: 5px;
             margin-top: 0;
+        }
+        .sub-title {
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 16px;
+            margin-top: 0;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #3498db;
+            font-weight: 500;
         }
         .form-grid {
             display: grid;
@@ -48,6 +59,7 @@
             border-radius: 5px;
             font-size: 16px;
             font-family: inherit;
+            box-sizing: border-box; /* تضمن توافق الحقول بالملي مع الموبايل */
         }
         input:focus {
             outline: none;
@@ -84,7 +96,6 @@
         .success { color: #2ecc71; background-color: #e8f8f0; }
         .error { color: #e74c3c; background-color: #fdedec; }
 
-        /* تنسيق التوقيع الأنيق في الأسفل */
         .footer-signature {
             text-align: center;
             margin-top: 40px;
@@ -100,6 +111,7 @@
 
     <div class="container">
         <h2>تسجيل بيانات - إعداد خدام</h2>
+        <div class="sub-title">كنيسة السيدة العذراء والقديسة مريم المجدلية</div>
         
         <form id="studentForm" action="https://api.web3forms.com/submit" method="POST">
             
@@ -161,4 +173,35 @@
             const object = Object.fromEntries(formData);
             const json = JSON.stringify(object);
 
-            fetch('https://api.
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: json
+            })
+            .then(async (response) => {
+                let res = await response.json();
+                if (response.status == 200) {
+                    resultMessage.className = 'success';
+                    resultMessage.innerText = 'تم حفظ بياناتك بنجاح! شكراً لك. 🎉';
+                    form.reset();
+                } else {
+                    resultMessage.className = 'error';
+                    resultMessage.innerText = res.message;
+                }
+            })
+            .catch(error => {
+                resultMessage.className = 'error';
+                resultMessage.innerText = 'عذراً، حدث خطأ في الاتصال بالشبكة!';
+            })
+            .then(() => {
+                setTimeout(() => {
+                    resultMessage.style.display = 'none';
+                }, 5000);
+            });
+        });
+    </script>
+</body>
+</html>
