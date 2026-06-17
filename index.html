@@ -56,9 +56,19 @@
             color: var(--text-main);
             font-size: 26px;
             letter-spacing: -0.5px;
-            margin-bottom: 35px;
+            margin-bottom: 8px; /* تقليل المسافة لتناسب العنوان الفرعي */
             margin-top: 0;
             font-weight: 700;
+        }
+
+        /* تنسيق العنوان الفرعي الجديد للكنيسة */
+        .church-title {
+            text-align: center;
+            color: var(--text-label);
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 35px; /* الحفاظ على المسافة قبل الحقول */
+            opacity: 0.9;
         }
 
         /* شبكة تنظيم الحقول المتطورة */
@@ -185,6 +195,8 @@
 
     <div class="container">
         <h2>تسجيل بيانات - إعداد خدام</h2>
+        <!-- العنوان الفرعي المضاف حديثاً -->
+        <div class="church-title">كنيسة السيدة العذراء والقديسة مريم المجدلية</div>
         
         <form id="studentForm" action="https://api.web3forms.com/submit" method="POST">
             
