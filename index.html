@@ -6,12 +6,12 @@
     <title>تسجيل بيانات - إعداد خدام</title>
     <style>
         :root {
-            /* درجات الزجاج الأبيض الشفاف والنقي */
-            --glass-bg: rgba(255, 255, 255, 0.45);
+            /* درجات الزجاج الأبيض الشفاف والنقي - تم تعديل الشفافية لتناسب الصور الخلفية */
+            --glass-bg: rgba(255, 255, 255, 0.65);
             --glass-border: rgba(255, 255, 255, 0.4);
-            --text-main: #1e293b;      /* كحلي داكن مائل للرمادي واضح جداً */
-            --text-label: #475569;     /* رمادي وسيط أنيق للحقول */
-            --accent-blue: #2563eb;    /* أزرق ملكي للأزرار والتفاعل */
+            --text-main: #0f172a;      /* كحلي غامق جداً وواضح فوق الزجاج */
+            --text-label: #334155;     /* رمادي داكن للحقول */
+            --accent-blue: #1e40af;    /* أزرق داكن مناسب للقراءة */
             --accent-emerald: #059669; /* لمسات زمردية خفيفة للنجاح */
         }
 
@@ -27,12 +27,11 @@
             align-items: center;
             box-sizing: border-box;
             
-            /* خلفية الشفق القطبي (Aurora) الناعمة والانسيابية */
-            background-color: #eef2f6;
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(37, 99, 235, 0.12) 0%, transparent 50%),
-                radial-gradient(circle at 90% 10%, rgba(5, 150, 105, 0.1) 0%, transparent 45%),
-                radial-gradient(circle at 50% 80%, rgba(244, 63, 94, 0.06) 0%, transparent 50%);
+            /* ربط صورة الخلفية المحلية الخاصة بك مع تعتيم خفيف جداً لضمان وضوح الكلمات */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15)), url('image_39314c.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             background-attachment: fixed;
         }
 
@@ -40,14 +39,14 @@
             width: 100%;
             max-width: 700px;
             background: var(--glass-bg);
-            /* تأثير تضبيب الزجاج الأبيض الفاخر */
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
+            /* تأثير تضبيب قوي وممتاز يعزل الصورة الخلفية خلف الاستمارة لقراءة مريحة */
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             padding: 40px;
             border-radius: 24px;
             border: 1px solid var(--glass-border);
-            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.06), 
-                        inset 0 1px 1px rgba(255, 255, 255, 0.6);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3), 
+                        inset 0 1px 1px rgba(255, 255, 255, 0.5);
             position: relative;
         }
 
@@ -56,18 +55,18 @@
             color: var(--text-main);
             font-size: 26px;
             letter-spacing: -0.5px;
-            margin-bottom: 8px; /* تقليل المسافة لتناسب العنوان الفرعي */
+            margin-bottom: 8px;
             margin-top: 0;
             font-weight: 700;
         }
 
-        /* تنسيق العنوان الفرعي الجديد للكنيسة */
+        /* تنسيق العنوان الفرعي للكنيسة */
         .church-title {
             text-align: center;
             color: var(--text-label);
             font-size: 16px;
             font-weight: 600;
-            margin-bottom: 35px; /* الحفاظ على المسافة قبل الحقول */
+            margin-bottom: 35px;
             opacity: 0.9;
         }
 
@@ -101,8 +100,8 @@
 
         input {
             padding: 13px 16px;
-            background: rgba(255, 255, 255, 0.5);
-            border: 1px solid rgba(148, 163, 184, 0.3);
+            background: rgba(255, 255, 255, 0.75);
+            border: 1px solid rgba(148, 163, 184, 0.4);
             border-radius: 12px;
             font-size: 15px;
             color: var(--text-main);
@@ -112,27 +111,21 @@
         }
 
         input::placeholder {
-            color: #94a3b8;
+            color: #64748b;
         }
 
         /* تفاعل الحقول النقي عند الضغط */
         input:focus {
             outline: none;
-            background: rgba(255, 255, 255, 0.85);
-            border-color: var(--accent-blue);
-            box-shadow: 0 0 12px rgba(37, 99, 235, 0.15);
+            background: rgba(255, 255, 255, 0.95);
+            border-color: #2563eb;
+            box-shadow: 0 0 12px rgba(37, 99, 235, 0.2);
             transform: translateY(-1px);
-        }
-
-        /* تغيير خفيف في لون الـ Label عند التفاعل */
-        .form-group input:focus + label,
-        .form-group input:focus ~ label {
-            color: var(--accent-blue);
         }
 
         input[type="date"]::-webkit-calendar-picker-indicator {
             cursor: pointer;
-            opacity: 0.6;
+            opacity: 0.7;
         }
 
         .buttons-container {
@@ -152,13 +145,13 @@
             font-weight: 600;
             color: white;
             background: linear-gradient(135deg, #2563eb, #1d4ed8);
-            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.2);
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
             transition: all 0.3s ease;
         }
 
         button:hover {
             background: linear-gradient(135deg, #3b82f6, #2563eb);
-            box-shadow: 0 12px 24px rgba(37, 99, 235, 0.3);
+            box-shadow: 0 12px 24px rgba(37, 99, 235, 0.4);
             transform: translateY(-2px);
         }
 
@@ -175,15 +168,15 @@
             border-radius: 12px;
             font-size: 14px;
         }
-        .success { color: #065f46; background-color: rgba(5, 150, 105, 0.1); border: 1px solid rgba(5, 150, 105, 0.2); }
-        .error { color: #991b1b; background-color: rgba(220, 38, 38, 0.1); border: 1px solid rgba(220, 38, 38, 0.2); }
+        .success { color: #065f46; background-color: rgba(5, 150, 105, 0.2); border: 1px solid rgba(5, 150, 105, 0.3); }
+        .error { color: #991b1b; background-color: rgba(220, 38, 38, 0.2); border: 1px solid rgba(220, 38, 38, 0.3); }
 
         /* التوقيع الشيك مدمج بهدوء وبدون بهرجة */
         .footer-signature {
             text-align: center;
             margin-top: 35px;
-            font-size: 10.5px;
-            color: #94a3b8;
+            font-size: 11px;
+            color: #475569;
             letter-spacing: 2px;
             text-transform: uppercase;
             font-family: 'Courier New', Courier, monospace;
@@ -195,7 +188,6 @@
 
     <div class="container">
         <h2>تسجيل بيانات - إعداد خدام</h2>
-        <!-- العنوان الفرعي المضاف حديثاً -->
         <div class="church-title">كنيسة السيدة العذراء والقديسة مريم المجدلية</div>
         
         <form id="studentForm" action="https://api.web3forms.com/submit" method="POST">
